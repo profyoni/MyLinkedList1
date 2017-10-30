@@ -14,19 +14,26 @@ class Node<T>
 public class LinkedList<T> implements List<T>
 {
     private Node<T> head, tail;
+    private int size;
 
     public LinkedList(){
         head = tail = null; // NC
     }
 
+
+    public LinkedList(Collection<T> clc)
+    {
+        addAll(clc);
+    }
+
     @Override //HW4
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override //HW4
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override //HW4
@@ -34,9 +41,27 @@ public class LinkedList<T> implements List<T>
         return false;
     }
 
+    class MyLinkedListIterator implements Iterator<T>
+    {
+        private Node<T> currentNode = head;
+        @Override
+        public boolean hasNext() {
+            if (currentNode == null)
+                return false;
+            else
+                return true;
+        }
+
+        @Override
+        public T next() {
+            T temp = currentNode.data;
+            currentNode = currentNode.next;
+            return temp;
+        }
+    }
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new MyLinkedListIterator();
     }
 
     @Override
@@ -51,7 +76,6 @@ public class LinkedList<T> implements List<T>
 
     @Override //HW4
     public boolean add(T t) {
-
         Node newNode = new Node();
         newNode.data = t;
         newNode.next = null; // NC
@@ -63,6 +87,8 @@ public class LinkedList<T> implements List<T>
             tail.next = newNode;
             tail = newNode;
         }
+        size++;
+        return true;
     }
 
     @Override //HW4
@@ -97,6 +123,8 @@ public class LinkedList<T> implements List<T>
 
     @Override //HW4
     public void clear() {
+        head = tail = null;
+        size = 0;
 
     }
 
