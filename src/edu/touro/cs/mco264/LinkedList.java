@@ -4,21 +4,22 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-
-/*
-Hi there # 1
-
-SHmuel Morris asked a good question!
-
- */
-class Node<T>
-{
-    Node next;
-    T data;
+class Foo{
+    // Node n; not accessable
 }
-
 public class LinkedList<T> implements List<T>
 {
+    private static class Node<T>
+    {
+        private Node prev, next;
+        private T data;
+
+        // void foo(){LinkedList.this.size=0;}
+    }
+
+    // private (inner) class
+    // static (inner) class = used when the inner class object does not need access to outer class
+
     private Node<T> head, tail;
     private int size;
 
