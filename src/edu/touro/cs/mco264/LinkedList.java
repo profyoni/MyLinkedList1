@@ -19,17 +19,17 @@ public class LinkedList<T> implements List<T>
         head = tail = null; // NC
     }
 
-    @Override
+    @Override //HW4
     public int size() {
         return 0;
     }
 
-    @Override
+    @Override //HW4
     public boolean isEmpty() {
         return false;
     }
 
-    @Override
+    @Override //HW4
     public boolean contains(Object o) {
         return false;
     }
@@ -49,7 +49,7 @@ public class LinkedList<T> implements List<T>
         return null;
     }
 
-    @Override
+    @Override //HW4
     public boolean add(T t) {
 
         Node newNode = new Node();
@@ -66,7 +66,7 @@ public class LinkedList<T> implements List<T>
         return true;
     }
 
-    @Override
+    @Override //HW4
     public boolean remove(Object o) {
         return false;
     }
@@ -96,12 +96,12 @@ public class LinkedList<T> implements List<T>
         return false;
     }
 
-    @Override
+    @Override //HW4
     public void clear() {
 
     }
 
-    @Override
+    @Override //HW4
     public T get(int i) {
         return null;
     }
