@@ -63,6 +63,7 @@ public class LinkedList<T> implements List<T>
             tail.next = newNode;
             tail = newNode;
         }
+        return true;
     }
 
     @Override
