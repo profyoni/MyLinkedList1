@@ -8,6 +8,8 @@ import java.util.ListIterator;
 /*
 Hi there # 1
 
+SHmuel Morris asked a good question!
+
  */
 class Node<T>
 {
