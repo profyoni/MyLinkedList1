@@ -48,6 +48,7 @@ public class LinkedList<T> implements List<T>
         return false;
     }
 
+    //HW5 XTRA so that a ConcrrentModificationException is thrown appropriately
     class MyLinkedListIterator implements Iterator<T>
     {
         private Node<T> currentNode = head;
@@ -103,22 +104,22 @@ public class LinkedList<T> implements List<T>
         return false;
     }
 
-    @Override
+    @Override //HW5
     public boolean containsAll(Collection<?> collection) {
         return false;
     }
 
-    @Override
+    @Override//HW5
     public boolean addAll(Collection<? extends T> collection) {
         return false;
     }
 
-    @Override
+    @Override//HW5
     public boolean addAll(int i, Collection<? extends T> collection) {
         return false;
     }
 
-    @Override
+    @Override//HW5
     public boolean removeAll(Collection<?> collection) {
         return false;
     }
@@ -140,42 +141,42 @@ public class LinkedList<T> implements List<T>
         return null;
     }
 
-    @Override
+    @Override //HW5
     public T set(int i, T t) {
         return null;
     }
 
-    @Override
+    @Override //HW5
     public void add(int i, T t) {
 
     }
 
-    @Override
+    @Override //HW5
     public T remove(int i) {
         return null;
     }
 
-    @Override
+    @Override //HW5
     public int indexOf(Object o) {
         return 0;
     }
 
-    @Override
+    @Override //HW5
     public int lastIndexOf(Object o) {
         return 0;
     }
 
-    @Override
+    @Override //HW5 XTRA
     public ListIterator<T> listIterator() {
         return null;
     }
 
-    @Override
+    @Override //HW5 XTRA
     public ListIterator<T> listIterator(int i) {
         return null;
     }
 
-    @Override
+    @Override //HW5 XTRA
     public List<T> subList(int i, int i1) {
         return null;
     }
