@@ -4,29 +4,43 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-
-class Node<T>
-{
-    Node next;
-    T data;
+class Foo{
+    // Node n; not accessable
 }
-
 public class LinkedList<T> implements List<T>
 {
+    private static class Node<T>
+    {
+        private Node prev, next;
+        private T data;
+
+        // void foo(){LinkedList.this.size=0;}
+    }
+
+    // private (inner) class
+    // static (inner) class = used when the inner class object does not need access to outer class
+
     private Node<T> head, tail;
+    private int size;
 
     public LinkedList(){
         head = tail = null; // NC
     }
 
+
+    public LinkedList(Collection<T> clc)
+    {
+        addAll(clc);
+    }
+
     @Override //HW4
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override //HW4
     public boolean isEmpty() {
-        return false;
+        return size == 0;
     }
 
     @Override //HW4
@@ -34,9 +48,28 @@ public class LinkedList<T> implements List<T>
         return false;
     }
 
+    //HW5 XTRA so that a ConcrrentModificationException is thrown appropriately
+    class MyLinkedListIterator implements Iterator<T>
+    {
+        private Node<T> currentNode = head;
+        @Override
+        public boolean hasNext() {
+            if (currentNode == null)
+                return false;
+            else
+                return true;
+        }
+
+        @Override
+        public T next() {
+            T temp = currentNode.data;
+            currentNode = currentNode.next;
+            return temp;
+        }
+    }
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return new MyLinkedListIterator();
     }
 
     @Override
@@ -51,7 +84,6 @@ public class LinkedList<T> implements List<T>
 
     @Override //HW4
     public boolean add(T t) {
-
         Node newNode = new Node();
         newNode.data = t;
         newNode.next = null; // NC
@@ -63,6 +95,7 @@ public class LinkedList<T> implements List<T>
             tail.next = newNode;
             tail = newNode;
         }
+        size++;
         return true;
     }
 
@@ -71,22 +104,22 @@ public class LinkedList<T> implements List<T>
         return false;
     }
 
-    @Override
+    @Override //HW5
     public boolean containsAll(Collection<?> collection) {
         return false;
     }
 
-    @Override
+    @Override//HW5
     public boolean addAll(Collection<? extends T> collection) {
         return false;
     }
 
-    @Override
+    @Override//HW5
     public boolean addAll(int i, Collection<? extends T> collection) {
         return false;
     }
 
-    @Override
+    @Override//HW5
     public boolean removeAll(Collection<?> collection) {
         return false;
     }
@@ -98,6 +131,8 @@ public class LinkedList<T> implements List<T>
 
     @Override //HW4
     public void clear() {
+        head = tail = null;
+        size = 0;
 
     }
 
@@ -106,42 +141,42 @@ public class LinkedList<T> implements List<T>
         return null;
     }
 
-    @Override
+    @Override //HW5
     public T set(int i, T t) {
         return null;
     }
 
-    @Override
+    @Override //HW5
     public void add(int i, T t) {
 
     }
 
-    @Override
+    @Override //HW5
     public T remove(int i) {
         return null;
     }
 
-    @Override
+    @Override //HW5
     public int indexOf(Object o) {
         return 0;
     }
 
-    @Override
+    @Override //HW5
     public int lastIndexOf(Object o) {
         return 0;
     }
 
-    @Override
+    @Override //HW5 XTRA
     public ListIterator<T> listIterator() {
         return null;
     }
 
-    @Override
+    @Override //HW5 XTRA
     public ListIterator<T> listIterator(int i) {
         return null;
     }
 
-    @Override
+    @Override //HW5 XTRA
     public List<T> subList(int i, int i1) {
         return null;
     }
